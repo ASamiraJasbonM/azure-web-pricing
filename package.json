@@ -1,0 +1,13 @@
+{
+  "name": "azure-web-pricing",
+  "version": "1.0.0",
+  "description": "Azure Web Pricing Calculator",
+  "scripts": {
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "install:all": "npm install --prefix frontend && npm install --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
