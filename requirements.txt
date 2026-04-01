@@ -1,0 +1,41 @@
+# MCP - Model Context Protocol
+mcp>=0.1.0
+fastmcp>=0.1.0
+
+# IA y Agentes
+langchain>=0.3.0
+langgraph>=0.2.0
+langchain-openai>=0.2.0
+langchain-anthropic>=0.2.0
+chromadb>=0.5.0
+
+# Web y API
+fastapi>=0.115.0
+uvicorn>=0.30.0
+pydantic>=2.0.0
+
+# Visualización
+matplotlib>=3.8.0
+plotly>=5.24.0
+seaborn>=0.13.0
+
+# Reportes
+reportlab>=4.2.0
+openpyxl>=3.1.0
+jinja2>=3.1.0
+weasyprint>=62.0
+
+# Diagramas
+mermaid>=0.4.0
+
+# Azure
+azure-identity>=1.17.0
+azure-mgmt-resource>=1.4.0
+
+# Utilidades
+requests>=2.32.0
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
+loguru>=0.7.0
+redis>=5.0.0
+aiohttp>=3.9.0

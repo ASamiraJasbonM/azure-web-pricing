@@ -1,0 +1,134 @@
+# Azure Cost Agent Configuration
+
+# Azure API Settings
+azure:
+  pricing_api:
+    base_url: "https://prices.azure.com/api/retail/prices"
+    currency: "USD"
+    default_region: "westus"
+    timeout: 30
+    max_retries: 3
+    retry_delay: 2
+  
+  auth:
+    use_managed_identity: false
+    subscription_id: ""
+    tenant_id: ""
+
+# Cache Settings  
+cache:
+  enabled: true
+  ttl_seconds: 3600  # 1 hour
+  max_size: 1000
+  storage_type: "memory"  # memory, redis, file
+  redis:
+    host: "localhost"
+    port: 6379
+    db: 0
+
+# MCP Server Settings
+mcp:
+  server:
+    name: "azure-cost-agent"
+    version: "0.1.0"
+    host: "127.0.0.1"
+    port: 8000
+  
+  tools:
+    enabled:
+      - "search_azure_prices"
+      - "calculate_deployment_cost"
+      - "compare_regions"
+      - "generate_cost_report"
+      - "create_cost_chart"
+      - "create_architecture_diagram"
+    
+    rate_limit:
+      requests_per_minute: 60
+      concurrent_requests: 10
+
+# AI Agent Settings
+agent:
+  provider: "openai"  # openai, anthropic
+  model: "gpt-4"
+  temperature: 0
+  max_tokens: 4000
+  
+  memory:
+    type: "短期"  #短期,长期
+    storage: "chromadb"
+    persist_directory: "./data/memory"
+  
+  prompts:
+    system_prompt_path: "src/agent/prompts/system.txt"
+    user_prompt_template: "src/agent/prompts/user_template.txt"
+
+# Visualization Settings
+visualization:
+  default:
+    chart_type: "bar"
+    color_scheme: "default"
+    width: 800
+    height: 600
+    dpi: 100
+  
+  output:
+    directory: "output/charts"
+    format: "png"
+  
+  themes:
+    - "default"
+    - "dark"
+    - "corporate"
+
+# Reports Settings
+reports:
+  output:
+    directory: "output/reports"
+    formats: ["pdf", "excel"]
+  
+  pdf:
+    page_size: "A4"
+    margin: 20
+    header: true
+    footer: true
+  
+  excel:
+    include_charts: true
+    include_formulas: true
+    freeze_header: true
+
+# Logging Settings
+logging:
+  level: "INFO"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name}:{function}:{line} - {message}"
+  output:
+    console: true
+    file: true
+    directory: "logs"
+  
+  rotation: "daily"
+  retention: "7d"
+
+# API Server Settings (REST)
+api:
+  host: "0.0.0.0"
+  port: 8080
+  reload: false
+  workers: 1
+  
+  cors:
+    enabled: true
+    origins: ["*"]
+    methods: ["GET", "POST"]
+  
+  auth:
+    enabled: false
+    api_key: ""
+
+# CLI Settings
+cli:
+  default_region: "westus"
+  default_currency: "USD"
+  interactive_mode: true
+  color_output: true
